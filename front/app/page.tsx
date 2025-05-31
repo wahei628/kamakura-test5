@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { Button } from "@mui/material"
 
 interface Task {
   id: number;
@@ -55,6 +56,9 @@ export default function Home() {
   return (
     <main className="mx-auto w-full flex justify-start items-center flex-col mt-32">
       <h1 className="font-semibold text-xl my-8">タスク一覧</h1>
+      <Button color="primary">プライマリ</Button>
+      <Button color="secondary">セカンダリ</Button>
+      <Button color="info">アクセント</Button>
       <section className="text-start w-96 mb-16">
         {tasks.length === 0 ? (
           <p>タスクがありません</p>
@@ -68,13 +72,14 @@ export default function Home() {
                 <dt className="w-1/3">{task?.title}</dt>
                 <dd className="w-2/3 flex justify-between items-center">
                   <span>{task?.description}</span>
-                  <button
-                    className="border rounded p-2 hover:bg-slate-400 transition-all"
+                  <Button
+                    variant="contained"
+                    color="error"
                     onClick={() => handleDelete(task.id)}
                     type="button"
                   >
                     削除
-                  </button>
+                  </Button>
                 </dd>
               </div>
             ))}
