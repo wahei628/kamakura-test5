@@ -16,13 +16,13 @@ class Api::V1::TasksController < ApplicationController
 
   def destroy
     task = Task.find(params[:id])
-    task.destroy
+    task.destroy!
     head :no_content
   end
 
   private
 
-  def task_params
-    params.permit(:title, :description)
-  end
+    def task_params
+      params.permit(:title, :description)
+    end
 end
