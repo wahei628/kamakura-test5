@@ -1,57 +1,57 @@
-"use client";
+'use client'
 
-import { useCallback, useEffect, useState } from "react";
-import { Button } from "@mui/material"
+import { Button } from '@mui/material'
+import { useCallback, useEffect, useState } from 'react'
 
 interface Task {
-  id: number;
-  title: string;
-  description: string;
+  id: number
+  title: string
+  description: string
 }
 
 export default function Home() {
-  const [tasks, setTasks] = useState([] as Task[]);
-  const [task, setTask] = useState({} as Task);
-  const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/api/${process.env.NEXT_PUBLIC_API_VERSION}/tasks`;
+  const [tasks, setTasks] = useState([] as Task[])
+  const [task, setTask] = useState({} as Task)
+  const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/api/${process.env.NEXT_PUBLIC_API_VERSION}/tasks`
 
   const fetchData = useCallback(async () => {
     await fetch(API_URL)
       .then((res) => res.json())
       .then((data) => {
-        setTasks(data);
-      });
-  }, []);
+        setTasks(data)
+      })
+  }, [])
 
   useEffect(() => {
     // データを取得
-    fetchData();
-  }, [fetchData]);
+    fetchData()
+  }, [fetchData])
 
   const handleDelete = async (id: number) => {
     await fetch(`${API_URL}/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
     }).then(() => {
-      fetchData();
-    });
-  };
+      fetchData()
+    })
+  }
 
   const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // データを追加
     await fetch(API_URL, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         title: task.title,
         description: task.description,
       }),
     }).then(() => {
-      fetchData();
-    });
-  };
+      fetchData()
+    })
+  }
 
   return (
     <main className="mx-auto w-full flex justify-start items-center flex-col mt-32">
@@ -122,5 +122,5 @@ export default function Home() {
         </form>
       </section>
     </main>
-  );
+  )
 }
