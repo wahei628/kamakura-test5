@@ -1,60 +1,64 @@
-"use client";
+'use client'
 
-import { useCallback, useEffect, useState } from "react";
+import { Button } from '@mui/material'
+import { useCallback, useEffect, useState } from 'react'
 
 interface Task {
-  id: number;
-  title: string;
-  description: string;
+  id: number
+  title: string
+  description: string
 }
 
 export default function Home() {
-  const [tasks, setTasks] = useState([] as Task[]);
-  const [task, setTask] = useState({} as Task);
-  const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/api/${process.env.NEXT_PUBLIC_API_VERSION}/tasks`;
+  const [tasks, setTasks] = useState([] as Task[])
+  const [task, setTask] = useState({} as Task)
+  const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/api/${process.env.NEXT_PUBLIC_API_VERSION}/tasks`
 
   const fetchData = useCallback(async () => {
     await fetch(API_URL)
       .then((res) => res.json())
       .then((data) => {
-        setTasks(data);
-      });
-  }, []);
+        setTasks(data)
+      })
+  }, [])
 
   useEffect(() => {
     // データを取得
-    fetchData();
-  }, [fetchData]);
+    fetchData()
+  }, [fetchData])
 
   const handleDelete = async (id: number) => {
     await fetch(`${API_URL}/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
     }).then(() => {
-      fetchData();
-    });
-  };
+      fetchData()
+    })
+  }
 
   const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // データを追加
     await fetch(API_URL, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         title: task.title,
         description: task.description,
       }),
     }).then(() => {
-      fetchData();
-    });
-  };
+      fetchData()
+    })
+  }
 
   return (
     <main className="mx-auto w-full flex justify-start items-center flex-col mt-32">
       <h1 className="font-semibold text-xl my-8">タスク一覧</h1>
+      <Button color="primary">プライマリ</Button>
+      <Button color="secondary">セカンダリ</Button>
+      <Button color="info">アクセント</Button>
       <section className="text-start w-96 mb-16">
         {tasks.length === 0 ? (
           <p>タスクがありません</p>
@@ -68,13 +72,14 @@ export default function Home() {
                 <dt className="w-1/3">{task?.title}</dt>
                 <dd className="w-2/3 flex justify-between items-center">
                   <span>{task?.description}</span>
-                  <button
-                    className="border rounded p-2 hover:bg-slate-400 transition-all"
+                  <Button
+                    variant="contained"
+                    color="error"
                     onClick={() => handleDelete(task.id)}
                     type="button"
                   >
                     削除
-                  </button>
+                  </Button>
                 </dd>
               </div>
             ))}
@@ -117,5 +122,5 @@ export default function Home() {
         </form>
       </section>
     </main>
-  );
+  )
 }
