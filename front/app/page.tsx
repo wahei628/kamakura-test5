@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
+import { LocationOn, Favorite, People } from '@mui/icons-material'
 import {
   Box,
   Container,
@@ -8,8 +7,9 @@ import {
   Button,
   Card,
   CardContent,
-} from "@mui/material";
-import { LocationOn, Favorite, People } from "@mui/icons-material";
+} from '@mui/material'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -28,20 +28,13 @@ export default function Home() {
         </Box>
 
         <Box className="relative z-10 text-center text-white px-4">
-          <Typography
-            variant="h1"
-            component="h1"
-            className="font-bold mb-12"
-          >
+          <Typography variant="h1" component="h1" className="font-bold mb-12">
             鎌倉の隠れた魅力を
             <br />
             発見しよう
           </Typography>
 
-          <Typography
-            variant="h5"
-            className=" mx-auto"
-          >
+          <Typography variant="h5" className=" mx-auto">
             地元の人だけが知る特別なスポットを検索・共有できる観光サポートアプリ
           </Typography>
 
@@ -173,5 +166,5 @@ export default function Home() {
         </Grid>
       </Container>
     </Box>
-  );
+  )
 }
