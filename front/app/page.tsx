@@ -7,7 +7,7 @@ import {
   Card,
   CardContent,
 } from '@mui/material'
-import Grid2 from "@mui/material/Unstable_Grid2";
+import Grid from '@mui/material/Grid'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -53,9 +53,9 @@ export default function Home() {
 
       {/* メインコンテンツ */}
       <Container maxWidth="lg" className="py-16">
-      <Grid2 container spacing={6}>
+        <Grid container spacing={6}>
           {/* 左下：アプリ説明 */}
-          <Grid2 xs={12} lg={6}>
+          <Grid fontSize={{ xs: 12, lg: 6 }}>
             <Card className="h-full shadow-lg">
               <CardContent className="p-8">
                 <Typography
@@ -67,39 +67,39 @@ export default function Home() {
                 <Typography className="text-gray-700 leading-relaxed mb-6">
                   観光ガイドには載っていない、地元の人だけが知る鎌倉の隠れたスポットを発見できるアプリです。古い路地の奥にある小さな神社、絶景が楽しめる秘密の展望台、地元民に愛される老舗の甘味処など、本当の鎌倉の魅力を体験できます。
                 </Typography>
-                <Grid2 container spacing={2} className="text-center">
-                  <Grid2 xs={4}>
+                <Grid container spacing={2} className="text-center">
+                  <Grid size={{ xs: 4 }}>
                     <Box className="flex flex-col items-center">
                       <LocationOn className="text-4xl text-primary-500 mb-2" />
                       <Typography variant="body2" className="font-medium">
                         隠れスポット
                       </Typography>
                     </Box>
-                  </Grid2>
+                  </Grid>
 
-                  <Grid2 xs={4}>
+                  <Grid size={{ xs: 4 }}>
                     <Box className="flex flex-col items-center">
                       <Favorite className="text-4xl text-primary-500 mb-2" />
                       <Typography variant="body2" className="font-medium">
                         お気に入り
                       </Typography>
                     </Box>
-                  </Grid2>
-                  <Grid2 xs={4}>
+                  </Grid>
+                  <Grid size={{ xs: 4 }}>
                     <Box className="flex flex-col items-center">
                       <People className="text-4xl text-primary-500 mb-2" />
                       <Typography variant="body2" className="font-medium">
                         コミュニティ
                       </Typography>
                     </Box>
-                  </Grid2>
-                </Grid2>
+                  </Grid>
+                </Grid>
               </CardContent>
             </Card>
-          </Grid2>
+          </Grid>
 
           {/* 右下：使い方ガイド */}
-          <Grid2 xs={12} lg={6}>
+          <Grid size={{ xs: 12, lg: 6 }}>
             <Card className="h-full shadow-lg">
               <CardContent className="p-8">
                 <Typography
@@ -163,8 +163,8 @@ export default function Home() {
                 </Button>
               </CardContent>
             </Card>
-          </Grid2>
-        </Grid2>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   )
