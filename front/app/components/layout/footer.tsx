@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { Box, Container, Typography } from "@mui/material";
-import { LocationOn } from "@mui/icons-material";
-import Grid from "@mui/material/Grid";
+import { LocationOn } from '@mui/icons-material'
+import { Box, Container, Typography } from '@mui/material'
+import Grid from '@mui/material/Grid'
+import Link from 'next/link'
 
 export default function Footer() {
   return (

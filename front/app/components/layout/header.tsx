@@ -1,6 +1,12 @@
-"use client";
+'use client'
 
-import Link from "next/link";
+import {
+  LocationOn,
+  Person,
+  Favorite,
+  Search,
+  Menu as MenuIcon,
+} from '@mui/icons-material'
 import {
   AppBar,
   Toolbar,
@@ -14,26 +20,20 @@ import {
   List,
   ListItem,
   ListItemText,
-} from "@mui/material";
-import {
-  LocationOn,
-  Person,
-  Favorite,
-  Search,
-  Menu as MenuIcon,
-} from "@mui/icons-material";
-import { useState } from "react";
+} from '@mui/material'
+import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Header() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const navigationItems = [
-    { label: "スポット検索", href: "/spots", icon: <Search /> },
-    { label: "いいね一覧", href: "/likes", icon: <Favorite /> },
-    { label: "マイページ", href: "/profile", icon: <Person /> },
-  ];
+    { label: 'スポット検索', href: '/spots', icon: <Search /> },
+    { label: 'いいね一覧', href: '/likes', icon: <Favorite /> },
+    { label: 'マイページ', href: '/profile', icon: <Person /> },
+  ]
 
   return (
     <>
@@ -70,12 +70,12 @@ export default function Header() {
                 color="inherit"
                 className="border border-white ml-4"
                 sx={{
-                  color: "#fff",
-                  borderColor: "#fff",
-                  "&:hover": {
-                    bgcolor: "#fff",
-                    color: "primary.main",
-                    borderColor: "#fff",
+                  color: '#fff',
+                  borderColor: '#fff',
+                  '&:hover': {
+                    bgcolor: '#fff',
+                    color: 'primary.main',
+                    borderColor: '#fff',
                   },
                 }}
               >
@@ -132,5 +132,5 @@ export default function Header() {
         </Box>
       </Drawer>
     </>
-  );
+  )
 }
