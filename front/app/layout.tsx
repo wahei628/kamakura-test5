@@ -1,22 +1,21 @@
 import type { Metadata } from 'next'
-import { Roboto } from "next/font/google";
+import { Roboto } from 'next/font/google'
 import './globals.css'
-import { MuiThemeProvider } from "@/components/layout/theme-provider"
+import Footer from '@/components/layout/footer'
 import Header from '@/components/layout/header'
-import Footer from '@/components/layout/footer' 
-
+import { MuiThemeProvider } from '@/components/layout/theme-provider'
 
 const roboto = Roboto({
-  weight: ["300", "400", "500", "700"],
-  subsets: ["latin"],
-  display: "swap",
-});
+  weight: ['300', '400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: "kamakura-travel - 隠れたスポットを発見しよう",
+  title: 'kamakura-travel - 隠れたスポットを発見しよう',
   description:
-    "鎌倉の地元の人だけが知る隠れたスポットを検索・共有できる旅行サポートアプリ",
-};
+    '鎌倉の地元の人だけが知る隠れたスポットを検索・共有できる旅行サポートアプリ',
+}
 
 export default function RootLayout({
   children,
