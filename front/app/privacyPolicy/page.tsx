@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import { Container, Typography, Box } from "@mui/material";
+import { Container, Typography, Box } from '@mui/material'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "プライバシーポリシー | kamakura-travel",
+  title: 'プライバシーポリシー | kamakura-travel',
   description:
-    "鎌倉のディープスポット検索アプリ「kamakura-travel」のプライバシーポリシーです。",
-};
+    '鎌倉のディープスポット検索アプリ「kamakura-travel」のプライバシーポリシーです。',
+}
 
 export default function PrivacyPolicyPage() {
   return (
@@ -92,15 +92,14 @@ export default function PrivacyPolicyPage() {
           1 件 1,000 円の事務手数料がかかります。
         </p>
       </Section>
-
     </Container>
-  );
+  )
 }
 
 type Props = {
-  title: string;
-  children: React.ReactNode;
-};
+  title: string
+  children: React.ReactNode
+}
 function Section({ title, children }: Props) {
   return (
     <Box component="section" className="mb-10">
@@ -109,5 +108,5 @@ function Section({ title, children }: Props) {
       </Typography>
       <div className="space-y-4">{children}</div>
     </Box>
-  );
+  )
 }

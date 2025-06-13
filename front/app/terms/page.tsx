@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import { Container, Typography, Box } from "@mui/material";
+import { Container, Typography, Box } from '@mui/material'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "利用規約 | kamakura-travel",
+  title: '利用規約 | kamakura-travel',
   description:
-    "鎌倉のディープスポット検索アプリ「kamakura-travel」の利用規約です。",
-};
+    '鎌倉のディープスポット検索アプリ「kamakura-travel」の利用規約です。',
+}
 
 export default function TermsPage() {
   return (
@@ -115,13 +115,11 @@ export default function TermsPage() {
         </p>
       </Section>
 
-
       <Section title="12. サービス内容の変更・終了">
         <p>
           当社はユーザーへの事前通知なく本サービスの内容変更、提供停止または終了を行うことがあります。
         </p>
       </Section>
-
 
       <Section title="13. 規約変更">
         <p>
@@ -129,20 +127,19 @@ export default function TermsPage() {
         </p>
       </Section>
 
-
       <Section title="14. 準拠法・裁判管轄">
         <p>
           本規約の準拠法は日本法とし、本サービスに起因または関連する紛争については当社本店所在地を管轄する地方裁判所を専属的合意管轄裁判所とします。
         </p>
       </Section>
     </Container>
-  );
+  )
 }
 
 type Props = {
-  title: string;
-  children: React.ReactNode;
-};
+  title: string
+  children: React.ReactNode
+}
 function Section({ title, children }: Props) {
   return (
     <Box component="section" className="mb-10">
@@ -151,7 +148,7 @@ function Section({ title, children }: Props) {
       </Typography>
       <div className="space-y-4">{children}</div>
     </Box>
-  );
+  )
 }
 
 function SectionSub({ title, children }: Props) {
@@ -162,5 +159,5 @@ function SectionSub({ title, children }: Props) {
       </Typography>
       <div className="space-y-3">{children}</div>
     </Box>
-  );
+  )
 }
