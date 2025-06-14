@@ -71,7 +71,7 @@ export default function Footer() {
                 <Typography variant="body2">プライバシーポリシー</Typography>
               </Link>
               <Link
-                href="#"
+                href="/contact"
                 className="block text-gray-600 hover:text-primary-500 no-underline"
               >
                 <Typography variant="body2">お問い合わせ</Typography>
