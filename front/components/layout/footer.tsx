@@ -59,19 +59,19 @@ export default function Footer() {
             </Typography>
             <Box className="space-y-2">
               <Link
-                href="#"
+                href="/terms"
                 className="block text-gray-600 hover:text-primary-500 no-underline"
               >
                 <Typography variant="body2">利用規約</Typography>
               </Link>
               <Link
-                href="#"
+                href="/privacyPolicy"
                 className="block text-gray-600 hover:text-primary-500 no-underline"
               >
                 <Typography variant="body2">プライバシーポリシー</Typography>
               </Link>
               <Link
-                href="#"
+                href="/contact"
                 className="block text-gray-600 hover:text-primary-500 no-underline"
               >
                 <Typography variant="body2">お問い合わせ</Typography>
