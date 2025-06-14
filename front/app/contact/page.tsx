@@ -1,13 +1,12 @@
-import type { Metadata } from "next";
-import { Container, Typography } from "@mui/material";
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "お問い合わせ | kamakura-travel",
-  description: "ご質問・ご要望はこちらのフォームからお送りください。",
-};
+  title: 'お問い合わせ | kamakura-travel',
+  description: 'ご質問・ご要望はこちらのフォームからお送りください。',
+}
 
 const GOOGLE_FORM_EMBED =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeX00Lg2MBk40zSIfpZdbaGYBgASO1vbClvRgsJK5LY7gjCPw/viewform?usp=dialog";
+  'https://docs.google.com/forms/d/e/1FAIpQLSeX00Lg2MBk40zSIfpZdbaGYBgASO1vbClvRgsJK5LY7gjCPw/viewform?usp=dialog'
 
 export default function ContactPage() {
   return (
@@ -21,6 +20,6 @@ export default function ContactPage() {
       >
         読み込んでいます…
       </iframe>
-      </>
-  );
+    </>
+  )
 }
