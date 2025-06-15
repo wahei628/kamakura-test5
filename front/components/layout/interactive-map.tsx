@@ -19,7 +19,7 @@ interface InteractiveMapProps {
 
 declare global {
   interface Window {
-    google: unknown
+    google: typeof google
     initMap: () => void
   }
 }
@@ -31,8 +31,14 @@ export default function InteractiveMap({
   showControls = true,
 }: InteractiveMapProps) {
   const mapRef = useRef<HTMLDivElement>(null)
-  const [map, setMap] = useState<unknown>(null)
-  const [markers, setMarkers] = useState<unknown[]>([])
+  const [map, setMap] = useState<google.maps.Map | null>(null)
+  const [markers, setMarkers] = useState<
+    {
+      marker: google.maps.Marker
+      infoWindow: google.maps.InfoWindow
+      spot: SpotLocation
+    }[]
+  >([])
   const [setUserLocation] = useState<MapLocation | null>(null)
   const [mapType, setMapType] = useState<'roadmap' | 'satellite'>('roadmap')
   const [isLoading, setIsLoading] = useState(true)
