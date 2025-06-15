@@ -12,7 +12,6 @@ import {
 import {
   Box,
   Container,
-  Grid,
   Card,
   CardContent,
   Typography,
@@ -26,6 +25,7 @@ import {
   Divider,
   Avatar,
 } from '@mui/material'
+import Grid from '@mui/material/Grid'
 import Image from 'next/image'
 import GoogleMapsIframe from '@/components/layout/google-maps-iframe'
 import { mockSpotLocations } from '@/lib/google-maps'
@@ -85,11 +85,11 @@ export default function SpotDetailPage() {
     <Container maxWidth="lg" className="py-8">
       <Grid container spacing={4}>
         {/* メイン情報 */}
-        <Grid item xs={12} lg={8}>
+        <Grid size={{ xs: 12, lg: 8 }}>
           <Box className="space-y-6">
             {/* 画像ギャラリー */}
             <Grid container spacing={2}>
-              <Grid item xs={12} md={8}>
+              <Grid size={{ xs: 12, lg: 8 }}>
                 <Card className="relative h-64 md:h-80 overflow-hidden">
                   <Image
                     src={spotData.images[0] || '/placeholder.svg'}
@@ -101,10 +101,10 @@ export default function SpotDetailPage() {
                   />
                 </Card>
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid size={{ xs: 12, lg: 8 }}>
                 <Grid container spacing={1}>
                   {spotData.images.slice(1, 4).map((image, index) => (
-                    <Grid item xs={4} md={12} key={index}>
+                    <Grid size={{ xs: 12, lg: 8 }} key={index}>
                       <Card className="relative h-20 md:h-24 overflow-hidden">
                         <Image
                           src={image || '/placeholder.svg'}
@@ -257,7 +257,7 @@ export default function SpotDetailPage() {
         </Grid>
 
         {/* サイドバー */}
-        <Grid item xs={12} lg={4}>
+        <Grid size={{ xs: 12, lg: 4 }}>
           <Box className="space-y-6">
             {/* 基本情報 */}
             <Card>
