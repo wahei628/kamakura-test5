@@ -1,6 +1,14 @@
-"use client";
+'use client'
 
-import Image from "next/image";
+import {
+  Favorite,
+  LocationOn,
+  AccessTime,
+  Phone,
+  Share,
+  Star,
+  Person,
+} from '@mui/icons-material'
 import {
   Box,
   Container,
@@ -17,68 +25,60 @@ import {
   ListItemText,
   Divider,
   Avatar,
-} from "@mui/material";
-import {
-  Favorite,
-  LocationOn,
-  AccessTime,
-  Phone,
-  Share,
-  Star,
-  Person,
-} from "@mui/icons-material";
-import GoogleMapsIframe from "@/components/layout/google-maps-iframe";
-import { mockSpotLocations } from "@/lib/google-maps";
+} from '@mui/material'
+import Image from 'next/image'
+import GoogleMapsIframe from '@/components/layout/google-maps-iframe'
+import { mockSpotLocations } from '@/lib/google-maps'
 
 // モックデータ（実際の実装では[id]パラメータを使用）
 const spotData = {
   id: 1,
-  name: "隠れ茶屋 竹の庵",
-  category: "グルメ",
+  name: '隠れ茶屋 竹の庵',
+  category: 'グルメ',
   description:
-    "竹林の奥にある秘密の茶屋。地元の人だけが知る絶品の抹茶スイーツが楽しめます。築80年の古民家を改装した店内は、静寂に包まれた特別な空間。季節ごとに変わる和菓子と、丁寧に点てられた抹茶の組み合わせは格別です。店主の心のこもったおもてなしと、時間を忘れさせてくれる雰囲気が多くの人に愛され続けています。",
+    '竹林の奥にある秘密の茶屋。地元の人だけが知る絶品の抹茶スイーツが楽しめます。築80年の古民家を改装した店内は、静寂に包まれた特別な空間。季節ごとに変わる和菓子と、丁寧に点てられた抹茶の組み合わせは格別です。店主の心のこもったおもてなしと、時間を忘れさせてくれる雰囲気が多くの人に愛され続けています。',
   images: [
-    "/placeholder.svg?height=400&width=600",
-    "/placeholder.svg?height=300&width=400",
-    "/placeholder.svg?height=300&width=400",
-    "/placeholder.svg?height=300&width=400",
+    '/placeholder.svg?height=400&width=600',
+    '/placeholder.svg?height=300&width=400',
+    '/placeholder.svg?height=300&width=400',
+    '/placeholder.svg?height=300&width=400',
   ],
   likes: 24,
   rating: 4.8,
   reviews: 12,
-  address: "神奈川県鎌倉市山ノ内123-45",
-  phone: "0467-12-3456",
-  hours: "10:00-17:00（火曜定休）",
-  access: "北鎌倉駅から徒歩15分、竹林の小道を奥へ進んだ先",
-  tags: ["隠れ家", "抹茶", "古民家", "静寂", "和菓子"],
-  price: "¥1,000-2,000",
-  website: "https://example.com",
+  address: '神奈川県鎌倉市山ノ内123-45',
+  phone: '0467-12-3456',
+  hours: '10:00-17:00（火曜定休）',
+  access: '北鎌倉駅から徒歩15分、竹林の小道を奥へ進んだ先',
+  tags: ['隠れ家', '抹茶', '古民家', '静寂', '和菓子'],
+  price: '¥1,000-2,000',
+  website: 'https://example.com',
   location: {
     lat: 35.3367,
     lng: 139.5468,
   },
-};
+}
 
 const mockReviews = [
   {
     id: 1,
-    user: "山田花子",
-    avatar: "/placeholder.svg?height=40&width=40",
+    user: '山田花子',
+    avatar: '/placeholder.svg?height=40&width=40',
     rating: 5,
-    date: "2024-01-15",
+    date: '2024-01-15',
     comment:
-      "本当に隠れた名店でした！抹茶の味が深くて、和菓子との相性も抜群。静かな環境でゆっくりできます。",
+      '本当に隠れた名店でした！抹茶の味が深くて、和菓子との相性も抜群。静かな環境でゆっくりできます。',
   },
   {
     id: 2,
-    user: "佐藤太郎",
-    avatar: "/placeholder.svg?height=40&width=40",
+    user: '佐藤太郎',
+    avatar: '/placeholder.svg?height=40&width=40',
     rating: 4,
-    date: "2024-01-10",
+    date: '2024-01-10',
     comment:
-      "竹林を抜けた先にある素敵なお店。少し分かりにくい場所ですが、それがまた特別感を演出しています。",
+      '竹林を抜けた先にある素敵なお店。少し分かりにくい場所ですが、それがまた特別感を演出しています。',
   },
-];
+]
 
 export default function SpotDetailPage() {
   return (
@@ -92,7 +92,7 @@ export default function SpotDetailPage() {
               <Grid item xs={12} md={8}>
                 <Card className="relative h-64 md:h-80 overflow-hidden">
                   <Image
-                    src={spotData.images[0] || "/placeholder.svg"}
+                    src={spotData.images[0] || '/placeholder.svg'}
                     alt={spotData.name}
                     fill
                     className="object-cover"
@@ -107,7 +107,7 @@ export default function SpotDetailPage() {
                     <Grid item xs={4} md={12} key={index}>
                       <Card className="relative h-20 md:h-24 overflow-hidden">
                         <Image
-                          src={image || "/placeholder.svg"}
+                          src={image || '/placeholder.svg'}
                           alt={`${spotData.name} ${index + 2}`}
                           fill
                           className="object-cover"
@@ -335,7 +335,7 @@ export default function SpotDetailPage() {
                           variant="body2"
                           className="text-primary-500 hover:underline cursor-pointer"
                           onClick={() =>
-                            window.open(spotData.website, "_blank")
+                            window.open(spotData.website, '_blank')
                           }
                         >
                           公式サイトを見る
@@ -382,7 +382,7 @@ export default function SpotDetailPage() {
                     >
                       <Card className="w-16 h-16 overflow-hidden flex-shrink-0">
                         <Image
-                          src={spot.image || "/placeholder.svg"}
+                          src={spot.image || '/placeholder.svg'}
                           alt={spot.name}
                           width={64}
                           height={64}
@@ -412,5 +412,5 @@ export default function SpotDetailPage() {
         </Grid>
       </Grid>
     </Container>
-  );
+  )
 }

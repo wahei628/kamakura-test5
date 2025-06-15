@@ -1,8 +1,13 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import {
+  Search,
+  LocationOn,
+  Favorite,
+  FilterList,
+  Map,
+  Close,
+} from '@mui/icons-material'
 import {
   Box,
   Container,
@@ -19,42 +24,37 @@ import {
   IconButton,
   Fab,
   Drawer,
-} from "@mui/material";
-import {
-  Search,
-  LocationOn,
-  Favorite,
-  FilterList,
-  Map,
-  Close,
-} from "@mui/icons-material";
-import InteractiveMap from "@/components/layout/interactive-map";
+} from '@mui/material'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useState } from 'react'
+import InteractiveMap from '@/components/layout/interactive-map'
 import {
   mockSpotLocations,
   calculateDistance,
   formatDistance,
   KAMAKURA_CENTER,
   type SpotLocation,
-} from "@/lib/google-maps";
+} from '@/lib/google-maps'
 
 export default function SpotsPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("全て");
-  const [selectedSpot, setSelectedSpot] = useState<SpotLocation | null>(null);
-  const [showMap, setShowMap] = useState(false);
-  const [userLocation, setUserLocation] = useState(KAMAKURA_CENTER);
+  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('全て')
+  const [selectedSpot, setSelectedSpot] = useState<SpotLocation | null>(null)
+  const [showMap, setShowMap] = useState(false)
+  const [userLocation] = useState(KAMAKURA_CENTER)
 
-  const categories = ["全て", "グルメ", "景観", "文化", "歴史", "自然"];
+  const categories = ['全て', 'グルメ', '景観', '文化', '歴史', '自然']
 
   // フィルタリングされたスポット
   const filteredSpots = mockSpotLocations.filter((spot) => {
     const matchesSearch =
       spot.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      spot.description.toLowerCase().includes(searchQuery.toLowerCase());
+      spot.description.toLowerCase().includes(searchQuery.toLowerCase())
     const matchesCategory =
-      selectedCategory === "全て" || spot.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
+      selectedCategory === '全て' || spot.category === selectedCategory
+    return matchesSearch && matchesCategory
+  })
 
   // 距離を計算してソート
   const spotsWithDistance = filteredSpots
@@ -62,11 +62,11 @@ export default function SpotsPage() {
       ...spot,
       distance: calculateDistance(userLocation, spot),
     }))
-    .sort((a, b) => a.distance - b.distance);
+    .sort((a, b) => a.distance - b.distance)
 
   const handleSpotSelect = (spot: SpotLocation) => {
-    setSelectedSpot(spot);
-  };
+    setSelectedSpot(spot)
+  }
 
   return (
     <Container maxWidth="lg" className="py-8">
@@ -117,8 +117,8 @@ export default function SpotsPage() {
             <Chip
               key={category}
               label={category}
-              variant={selectedCategory === category ? "filled" : "outlined"}
-              color={selectedCategory === category ? "primary" : "default"}
+              variant={selectedCategory === category ? 'filled' : 'outlined'}
+              color={selectedCategory === category ? 'primary' : 'default'}
               onClick={() => setSelectedCategory(category)}
               className="cursor-pointer whitespace-nowrap"
             />
@@ -154,14 +154,14 @@ export default function SpotsPage() {
           <Grid item xs={12} md={6} lg={4} key={spot.id}>
             <Card
               className={`h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer ${
-                selectedSpot?.id === spot.id ? "ring-2 ring-primary-500" : ""
+                selectedSpot?.id === spot.id ? 'ring-2 ring-primary-500' : ''
               }`}
               onClick={() => handleSpotSelect(spot)}
             >
               <Box className="relative">
                 <CardMedia component="div" className="h-48 relative">
                   <Image
-                    src={spot.image || "/placeholder.svg"}
+                    src={spot.image || '/placeholder.svg'}
                     alt={spot.name}
                     fill
                     className="object-cover"
@@ -215,11 +215,11 @@ export default function SpotsPage() {
                   <Button
                     size="small"
                     onClick={(e) => {
-                      e.stopPropagation();
-                      handleSpotSelect(spot);
+                      e.stopPropagation()
+                      handleSpotSelect(spot)
                     }}
                     variant={
-                      selectedSpot?.id === spot.id ? "contained" : "outlined"
+                      selectedSpot?.id === spot.id ? 'contained' : 'outlined'
                     }
                   >
                     地図で表示
@@ -252,9 +252,9 @@ export default function SpotsPage() {
           <Button
             variant="outlined"
             onClick={() => {
-              setSearchQuery("");
-              setSelectedCategory("全て");
-              setSelectedSpot(null);
+              setSearchQuery('')
+              setSelectedCategory('全て')
+              setSelectedSpot(null)
             }}
           >
             検索条件をリセット
@@ -277,7 +277,7 @@ export default function SpotsPage() {
         open={showMap}
         onClose={() => setShowMap(false)}
         PaperProps={{
-          sx: { height: "80vh" },
+          sx: { height: '80vh' },
         }}
       >
         <Box className="p-4 h-full flex flex-col">
@@ -298,5 +298,5 @@ export default function SpotsPage() {
         </Box>
       </Drawer>
     </Container>
-  );
+  )
 }
