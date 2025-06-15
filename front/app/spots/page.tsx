@@ -11,7 +11,6 @@ import {
 import {
   Box,
   Container,
-  Grid,
   Card,
   CardContent,
   CardMedia,
@@ -25,6 +24,7 @@ import {
   Fab,
   Drawer,
 } from '@mui/material'
+import Grid from '@mui/material/Grid'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -83,7 +83,7 @@ export default function SpotsPage() {
       {/* 検索バー */}
       <Box className="mb-8">
         <Grid container spacing={2} className="mb-4">
-          <Grid item xs={12} md={10}>
+          <Grid size={{ xs: 12, md: 10 }}>
             <TextField
               fullWidth
               placeholder="スポット名やキーワードで検索..."
@@ -99,7 +99,7 @@ export default function SpotsPage() {
               className="bg-white"
             />
           </Grid>
-          <Grid item xs={12} md={2}>
+          <Grid size={{ xs: 12, md: 2 }}>
             <Button
               variant="outlined"
               fullWidth
@@ -151,7 +151,7 @@ export default function SpotsPage() {
       {/* 検索結果 */}
       <Grid container spacing={3}>
         {spotsWithDistance.map((spot) => (
-          <Grid item xs={12} md={6} lg={4} key={spot.id}>
+          <Grid size={{ xs: 12, md: 6, lg: 4 }} key={spot.id}>
             <Card
               className={`h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer ${
                 selectedSpot?.id === spot.id ? 'ring-2 ring-primary-500' : ''
