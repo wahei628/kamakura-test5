@@ -20,7 +20,7 @@ interface InteractiveMapProps {
 declare global {
   interface Window {
     google: any
-    initMap: () => void
+    initMap?: () => void
   }
 }
 
