@@ -33,7 +33,7 @@ export default function InteractiveMap({
   const mapRef = useRef<HTMLDivElement>(null)
   const [map, setMap] = useState<any>(null)
   const [markers, setMarkers] = useState<any[]>([])
-  const [setUserLocation] = useState<MapLocation | null>(null)
+  const [userLocation, setUserLocation] = useState<MapLocation | null>(null);
   const [mapType, setMapType] = useState<'roadmap' | 'satellite'>('roadmap')
   const [isLoading, setIsLoading] = useState(true)
 
